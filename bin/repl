@@ -1,2 +1,7 @@
 #!/bin/sh
-julia --color=yes --depwarn=no --project=@. -q -L $(dirname $0)/../bootstrap.jl -- "$@"
+# julia --color=yes --depwarn=no --project=@. --quiet --load $(dirname $0)/../bootstrap.jl -- "$@"
+#
+#   --project=@. The default @. option will search through parent directories until a
+#                Project.toml or JuliaProject.toml file is found.
+#    -- "$@"   : Add all other options passed to the script to the end of the command line.
+julia --threads auto --color=yes --depwarn=no --project=@. --load $(dirname $0)/../bootstrap.jl -- "$@"

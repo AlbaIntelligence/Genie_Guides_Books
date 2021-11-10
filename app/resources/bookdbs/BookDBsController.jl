@@ -1,19 +1,59 @@
 module BookDBsController
 
+using Revise, Debugger
+
 using Genie.Renderer.Html, SearchLight, BookDBs
 
 function billgatesbookdbs_sqlite()
   html(:bookdbs, :billgatesbooks, bookdbs = all(BookDB))
 end
 
-function new_intermediate()
-  html(:bookdbs, :view_new_intermediate)
+function intermediate_new()
+  html(:bookdbs, :intermediate_form_new)
 end
 
-using Genie.Router, Genie.Renderer
+function intermediate_create()
+  BookDB(title = params(:book_title), author = params(:book_author)) |> save &&
+    redirect(:bgbooks_db_view_json)
+end
 
-function create_intermediate()
-  BookDB(title = params(:book_title), author = params(:book_author)) |> save && redirect(:bgbooks_db_view_html)
+
+using Genie.Router, Genie.Renderer
+function intermediate_new_cover()
+  html(:bookdbs, :intermediate_form_new_cover)
+end
+
+using Genie.Requests # to import filespayload()
+function intermediate_create_cover()
+  if haskey(filespayload(), "book_cover")
+    load_name = String(filespayload("book_cover").name)
+
+    web_path = joinpath("img/covers", load_name)
+    storage_path = joinpath("public/img/covers", load_name)
+
+    # !!!! Please make sure that you create the folder `covers/` within `public/img/`
+    open(storage_path; write = true, truncate = true) do f
+      write(f, IOBuffer(filespayload("book_cover").data))
+    end
+  else
+    web_path = ""
+  end
+
+  BookDB(title = params(:book_title), author = params(:book_author), cover = web_path) |>
+    save && redirect(:bgbooks_db_view_json)
+end
+
+function get_cover_path(bookdb::BookDB; default_path = "../img/genie/docs.png")
+  if isempty(bookdb.cover)
+    return default_path
+  else
+    return "../" * bookdb.cover
+  end
+end
+
+function intermediate_view_all_covers()
+  Debugger.@bp
+  html(:bookdbs, :intermediate_view_all_covers, bookdbs = all(BookDB))
 end
 
 

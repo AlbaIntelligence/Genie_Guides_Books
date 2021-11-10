@@ -1,0 +1,12 @@
+<!-- app/resources/books/views/intermediate_view_all_covers.jl.html -->
+<h1>Bill's Gates top $( length(bookdbs) ) recommended books with cover pictures</h1>
+<ul>
+  <% for_each(bookdbs) do bookdb %>
+    <li> <img src='$( isempty(bookdb.cover) ? "img/genie/docs.png" : bookdb.cover )' width="100px" /> $(bookdb.title) by
+      $(bookdb.author)
+    </li>
+
+  <% end %>
+</ul>
+
+

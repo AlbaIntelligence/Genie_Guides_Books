@@ -1,3 +1,4 @@
+using Revise, Debugger
 using Genie.Router
 using BooksController
 
@@ -56,7 +57,7 @@ using BookDBsController
 route("/api/v3/bgbookdbs",
   BookDBsController.API.billgatesbookdbs_view_sqlite;
   method = GET,
-  named = :bgbooks_db_view_html
+  named = :bgbooks_db_view_json
 )
 
 ########################################################################################
@@ -67,13 +68,38 @@ route("/api/v3/bgbookdbs",
 
 route(
   "/bgbook_db_intermediate/new",
-  BookDBsController.new_intermediate;
+  BookDBsController.intermediate_new;
   method = GET,
-  named = :new_intermediate)
+  named = :intermediate_new)
 
 route(
   "/bgbook_db_intermediate/create",
-  BookDBsController.create_intermediate;
+  BookDBsController.intermediate_create;
   method = POST,
-  named = :create_intermediate)
+  named = :intermediate_create)
 
+########################################################################################
+#
+# Working With Genie Apps: Intermediate Topics - With cover
+#
+########################################################################################
+
+route(
+  "/bgbook_db_intermediate/new_cover",
+  BookDBsController.intermediate_new_cover;
+  method = GET,
+  named = :intermediate_new_cover
+)
+
+route(
+  "/bgbook_db_intermediate/create_cover",
+  BookDBsController.intermediate_create_cover;
+  method = POST,
+  named = :intermediate_create_cover
+)
+
+route("/bgbook_db_intermediate/view_all_covers",
+  BookDBsController.intermediate_view_all_covers;
+  method = GET,
+  named = :intermediate_view_all_covers
+)

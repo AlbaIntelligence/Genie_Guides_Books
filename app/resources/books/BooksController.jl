@@ -1,5 +1,7 @@
 module BooksController
 
+using Debugger
+
 struct Book
   title::String
   author::String

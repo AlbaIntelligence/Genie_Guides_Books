@@ -12,6 +12,7 @@ export BookDB
   id::DbId = DbId()
   title::String = ""
   author::String = ""
+  cover::String = ""
 end
 
 function seed()

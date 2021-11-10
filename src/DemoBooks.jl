@@ -1,6 +1,6 @@
 module DemoBooks
 
-using Genie, Logging, LoggingExtras, StructTypes
+using Debugger, Genie, Logging, LoggingExtras, StructTypes
 
 function main()
   Core.eval(Main, :(const UserApp = $(@__MODULE__)))

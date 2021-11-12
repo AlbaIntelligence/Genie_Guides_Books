@@ -103,3 +103,28 @@ route("/bgbook_db_intermediate/view_all_covers",
   method = GET,
   named = :intermediate_view_all_covers
 )
+
+route(
+  "/bgbook_db_intermediate/view_all_covers_gen",
+  BookDBsController.intermediate_view_all_covers_gen;
+  method = GET,
+  named = :intermediate_view_all_covers_gen
+)
+
+route(
+  "/bgbook_db_intermediate/:id::Int/edit",
+  BookDBsController.intermediate_edit;
+  method = GET,
+  named = :intermediate_edit_book
+)
+
+route(
+  "/bgbook_db_intermediate/:id::Int/update",
+  BooksController.intermediate_update;
+  method = POST,
+  named = :intermediate_update_book
+)
+
+
+
+

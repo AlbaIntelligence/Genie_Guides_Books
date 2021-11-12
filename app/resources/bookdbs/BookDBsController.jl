@@ -57,6 +57,40 @@ function intermediate_view_all_covers()
 end
 
 
+function intermediate_edit()
+end
+
+function intermediate_update()
+end
+
+
+function intermediate_view_all_covers_gen()
+  [
+    Html.h1(htmlsourceindent = "2") do
+      ["""Bill's Gates top $( length(:bookdbs) ) recommended books with cover pictures"""]
+    end
+
+    Html.ul(htmlsourceindent = "2") do
+      [
+        for_each(bookdbs) do bookdb
+          Html.li(htmlsourceindent = "3") do
+            [
+              Html.img(
+                  src = isempty(bookdb.cover) ? "/img/genie/docs.png" : "/" * bookdb.cover,
+                  htmlsourceindent = "4",
+                  width = "100px"
+              )
+
+              """ $(bookdb.title) by $(bookdb.author) """
+            ]
+          end
+        end
+      ]
+    end
+  ]
+end
+
+
 module API
 using ..BookDBsController
 using Genie.Renderer.Json, SearchLight, BookDBs

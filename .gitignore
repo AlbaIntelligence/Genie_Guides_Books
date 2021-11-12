@@ -37,6 +37,7 @@ Thumbs.db
 .vscode
 .tags*
 .tags
+.ipynb_checkpoints
 
 # NPM packages folder.
 node_modules/

@@ -98,7 +98,8 @@ route(
   named = :intermediate_create_cover
 )
 
-route("/bgbook_db_intermediate/view_all_covers",
+route(
+  "/bgbook_db_intermediate/view_all_covers",
   BookDBsController.intermediate_view_all_covers;
   method = GET,
   named = :intermediate_view_all_covers

@@ -57,13 +57,7 @@ function intermediate_view_all_covers()
 end
 
 
-function intermediate_edit()
-end
-
-function intermediate_update()
-end
-
-
+# Test function - Not used in the guide
 function intermediate_view_all_covers_gen()
   [
     Html.h1(htmlsourceindent = "2") do
@@ -89,6 +83,26 @@ function intermediate_view_all_covers_gen()
     end
   ]
 end
+
+
+function intermediate_partial_new()
+  html(:bookdbs, :intermediate_partial_new)
+end
+
+
+function intermediate_partial_view_all_covers()
+  html(:bookdbs, :intermediate_partial_view_all_covers, bookdbs = all(BookDB))
+end
+
+
+function intermediate_edit()
+  nothing
+end
+
+function intermediate_update()
+  nothing
+end
+
 
 
 module API

@@ -1,0 +1,9 @@
+<!-- app/resources/books/views/intermediate_partial_view_all_covers.jl.html -->
+<h1>Bill's Gates top $( length(bookdbs) ) recommended books with cover pictures</h1>
+<ul>
+  <% for_each(bookdbs) do bookdb %>
+    <% partial("app/resources/bookdbs/views/intermediate_partial_bookdb.jl.html",
+               bookdb = bookdb,
+               context = @__MODULE__) %>
+  <% end %>
+</ul>

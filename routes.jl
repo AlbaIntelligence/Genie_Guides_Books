@@ -112,6 +112,27 @@ route(
   named = :intermediate_view_all_covers_gen
 )
 
+
+########################################################################################
+#
+# Working With Genie Apps: Intermediate Topics - Partials
+#
+########################################################################################
+
+route(
+  "/bgbook_db_intermediate/intermediate_partial_new",
+  BookDBsController.intermediate_partial_new;
+  method = GET,
+  named = :intermediate_partial_new
+)
+
+route(
+  "/bgbook_db_intermediate/intermediate_partial_view_all_covers",
+  BookDBsController.intermediate_partial_view_all_covers;
+  method = GET,
+  named = :intermediate_partial_view_all_covers
+)
+
 route(
   "/bgbook_db_intermediate/:id::Int/edit",
   BookDBsController.intermediate_edit;
@@ -125,7 +146,4 @@ route(
   method = POST,
   named = :intermediate_update_book
 )
-
-
-
 

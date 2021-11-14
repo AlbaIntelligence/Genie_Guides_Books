@@ -1,0 +1,5 @@
+<!-- app/resources/bookdbs/views/intermediate_partial_bookdb.jl.html -->
+<li>
+  <img src='/$(isempty(bookdb.cover) ? "img/genie/docs.png" : bookdb.cover)' width="100px"></img>
+  $(bookdb.title) by $(bookdb.author) <a href='/bookdb/$(bookdb.id)'> EDIT ME!</a>
+</li>

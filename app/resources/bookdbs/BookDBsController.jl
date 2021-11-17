@@ -106,7 +106,6 @@ end
 
 
 module API
-using ..BookDBsController
 using Genie.Renderer.Json, SearchLight, BookDBs
 
 function billgatesbookdbs_view_sqlite()

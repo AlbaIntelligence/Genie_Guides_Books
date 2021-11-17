@@ -1,6 +1,6 @@
 using Revise, Debugger
 using Genie.Router
-using BooksController
+
 
 ########################################################################################
 #
@@ -8,6 +8,7 @@ using BooksController
 #
 ########################################################################################
 
+using BooksController
 
 route("/") do
   serve_static_file("welcome.html")
@@ -52,7 +53,9 @@ end
 #
 ########################################################################################
 
+using BookDBs
 using BookDBsController
+
 
 route("/api/v3/bgbookdbs",
   BookDBsController.API.billgatesbookdbs_view_sqlite;
@@ -140,10 +143,10 @@ route(
   named = :intermediate_edit_book
 )
 
-route(
-  "/bgbook_db_intermediate/:id::Int/update",
-  BooksController.intermediate_update;
-  method = POST,
-  named = :intermediate_update_book
-)
+# route(
+#   "/bgbook_db_intermediate/:id::Int/update",
+#   BooksController.intermediate_update;
+#   method = POST,
+#   named = :intermediate_update_book
+# )
 

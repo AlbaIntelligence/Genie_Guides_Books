@@ -58,8 +58,8 @@ using StructTypes
 StructTypes.StructType(::Type{Book}) = StructTypes.Struct()
 
 module API
-using ..BooksController
 using Genie.Renderer.Json
+using BooksController
 
 function billgatesbooks_view_json()
    json(BooksController.BillGatesBooks)
